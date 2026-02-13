@@ -13,26 +13,25 @@ body {
     font-family: "Pixelify Sans", sans-serif;
 }
 
-/* ====== PULSO SOBRE ====== */
+/* Pulso sobre */
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
 
-/* ====== SOBRE ====== */
+/* Sobre */
 #envelope-container {
     text-align: center;
     cursor: pointer;
 }
 
 #envelope {
-    width: 250px;
     animation: pulse 2s infinite;
     cursor: pointer;
 }
 
-/* ====== TEXTO DEBAJO DEL SOBRE ====== */
+/* Texto debajo del sobre */
 #envelope-text {
     background: linear-gradient(135deg, #ffb6c1, #ff69b4);
     padding: 12px 25px;
@@ -47,12 +46,12 @@ body {
     animation: pulse 2s infinite;
 }
 
-/* ====== CARTA ====== */
+/* Carta */
 #letter-container {
     display: none;
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     justify-content: center;
     align-items: center;
 }
@@ -61,12 +60,12 @@ body {
     position: relative;
     width: 80vw;
     max-width: 600px;
-    height: auto;
+    height: 400px;
     background-image: url("window.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -85,7 +84,7 @@ body {
     opacity: 1;
 }
 
-/* ====== CONTENIDO INICIAL ====== */
+/* Contenido inicial */
 .letter-window h1#letter-title {
     font-size: 30px;
     margin-top: 70px;
@@ -93,7 +92,6 @@ body {
 
 .letter-window .cat {
     width: 150px;
-    margin: 10px 0;
 }
 
 .letter-window .buttons {
@@ -107,32 +105,26 @@ body {
     width: 70px;
 }
 
-/* ====== CONTENIDO FINAL ====== */
+/* Contenido final independiente */
 #final-container {
-    display: none; /* inicia oculto */
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    margin-top: 20px;
 }
 
 .final-cat {
-    width: 300px; /* grande */
-    max-width: 90vw; /* adaptable en móvil */
-    height: auto;
+    width: 300px;
     transition: transform 0.4s ease;
 }
 
 .final-text {
-    font-size: 18px;
+    font-size: 18px; 
     text-align: center;
     background-color: rgba(255,240,240,0.5);
     border-radius: 12px;
-    padding: 8px 12px;
-    margin-top: 0; /* sin margen superior */
 }
 
-/* ====== EFECTO HALO ====== */
+/* Efecto halo */
 @keyframes halo {
     0% { box-shadow: 0 0 0px rgba(255,192,203,0.7); }
     50% { box-shadow: 0 0 30px rgba(255,182,193,0.9), 0 0 60px rgba(255,105,180,0.6); }
@@ -145,6 +137,7 @@ body {
 
 /* ====== MEDIA QUERIES PARA MÓVIL ====== */
 @media (max-width: 480px) {
+    /* Sobre más pequeño */
     #envelope {
         width: 180px;
     }
@@ -154,17 +147,32 @@ body {
         padding: 8px 16px;
     }
 
+    /* Carta más pequeña */
+    .letter-window {
+        width: 90vw;
+        padding-top: 40px;
+        padding: 15px;
+    }
+
+    /* Título más pequeño */
     .letter-window h1#letter-title {
-        font-size: 22px;
+        font-size: 20px;
         margin-top: 40px;
     }
 
+    /* Gato inicial más pequeño */
     .letter-window .cat {
-        width: 120px;
+        width: 100px;
     }
 
+    /* Botones más pequeños */
     .letter-window .btn {
         width: 50px;
+    }
+
+    /* Contenido final más pequeño */
+    #final-container {
+        margin-top: 15px;
     }
 
     .final-cat {

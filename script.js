@@ -22,15 +22,21 @@ envelope.addEventListener("click", () => {
     }, 50);
 });
 
-// Lógica para hacer crecer YES y añadir halo al pulsar NO
+// Lógica para hacer crecer YES al pulsar NO
 let yesScale = 1;
+const maxScaleDesktop = 10; // máximo en escritorio
+const maxScaleMobile = 5;   // máximo en móvil
 
 yesBtn.style.position = "relative";
 yesBtn.style.transformOrigin = "center center";
 yesBtn.style.transition = "transform 0.3s ease";
 
 noBtn.addEventListener("click", () => {
-    yesScale = Math.min(yesScale + 0.5, 2); // máximo 2x en móvil
+    // Detectar si estamos en móvil
+    const maxScale = window.innerWidth <= 480 ? maxScaleMobile : maxScaleDesktop;
+
+    // Aumentamos YES hasta el máximo
+    yesScale = Math.min(yesScale + 0.3, maxScale);
     yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
     yesBtn.style.position = "fixed";
     yesBtn.style.top = "50%";
@@ -51,6 +57,6 @@ yesBtn.addEventListener("click", () => {
     buttons.style.display = "none";
     finalContainer.style.display = "flex";
 
-    // Opcional: animación del gato final
+    // Animación opcional del gato final
     if(finalCat) finalCat.style.transform = "scale(1.1)";
 });

@@ -1,3 +1,4 @@
+/* ====== BODY ====== */
 body {
     margin: 0;
     min-height: 100vh;
@@ -12,25 +13,26 @@ body {
     font-family: "Pixelify Sans", sans-serif;
 }
 
-/* Pulso sobre */
+/* ====== PULSO SOBRE ====== */
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
 
-/* Sobre */
+/* ====== SOBRE ====== */
 #envelope-container {
     text-align: center;
     cursor: pointer;
 }
 
 #envelope {
+    width: 250px;
     animation: pulse 2s infinite;
     cursor: pointer;
 }
 
-/* Texto debajo del sobre */
+/* ====== TEXTO DEBAJO DEL SOBRE ====== */
 #envelope-text {
     background: linear-gradient(135deg, #ffb6c1, #ff69b4);
     padding: 12px 25px;
@@ -45,12 +47,12 @@ body {
     animation: pulse 2s infinite;
 }
 
-/* Carta */
+/* ====== CARTA ====== */
 #letter-container {
     display: none;
     position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
 }
@@ -59,12 +61,12 @@ body {
     position: relative;
     width: 80vw;
     max-width: 600px;
-    height: 400px;
+    height: auto;
     background-image: url("window.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    padding: 15px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -83,7 +85,7 @@ body {
     opacity: 1;
 }
 
-/* Contenido inicial */
+/* ====== CONTENIDO INICIAL ====== */
 .letter-window h1#letter-title {
     font-size: 30px;
     margin-top: 70px;
@@ -91,6 +93,7 @@ body {
 
 .letter-window .cat {
     width: 150px;
+    margin: 10px 0;
 }
 
 .letter-window .buttons {
@@ -104,27 +107,32 @@ body {
     width: 70px;
 }
 
-/* Contenido final independiente */
+/* ====== CONTENIDO FINAL ====== */
 #final-container {
-    display: flex;
+    display: none; /* inicia oculto */
     flex-direction: column;
     align-items: center;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 .final-cat {
-    width: 300px;   /* antes estaba 120px, ahora más grande */
+    width: 300px; /* grande */
+    max-width: 90vw; /* adaptable en móvil */
+    height: auto;
     transition: transform 0.4s ease;
 }
 
 .final-text {
-    font-size: 18px; 
+    font-size: 18px;
     text-align: center;
     background-color: rgba(255,240,240,0.5);
     border-radius: 12px;
+    padding: 8px 12px;
+    margin-top: 0; /* sin margen superior */
 }
 
-
-/* Efecto halo */
+/* ====== EFECTO HALO ====== */
 @keyframes halo {
     0% { box-shadow: 0 0 0px rgba(255,192,203,0.7); }
     50% { box-shadow: 0 0 30px rgba(255,182,193,0.9), 0 0 60px rgba(255,105,180,0.6); }
@@ -133,4 +141,37 @@ body {
 
 .halo {
     animation: halo 1s ease-in-out 1;
+}
+
+/* ====== MEDIA QUERIES PARA MÓVIL ====== */
+@media (max-width: 480px) {
+    #envelope {
+        width: 180px;
+    }
+
+    #envelope-text {
+        font-size: 18px;
+        padding: 8px 16px;
+    }
+
+    .letter-window h1#letter-title {
+        font-size: 22px;
+        margin-top: 40px;
+    }
+
+    .letter-window .cat {
+        width: 120px;
+    }
+
+    .letter-window .btn {
+        width: 50px;
+    }
+
+    .final-cat {
+        width: 180px;
+    }
+
+    .final-text {
+        font-size: 14px;
+    }
 }

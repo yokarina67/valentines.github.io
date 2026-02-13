@@ -9,6 +9,7 @@ const title = document.getElementById("letter-title");
 const catImg = document.getElementById("letter-cat");
 const buttons = document.getElementById("letter-buttons");
 const finalContainer = document.getElementById("final-container");
+const finalCat = document.querySelector(".final-cat");
 
 // Click sobre el sobre
 envelope.addEventListener("click", () => {
@@ -29,7 +30,7 @@ yesBtn.style.transformOrigin = "center center";
 yesBtn.style.transition = "transform 0.3s ease";
 
 noBtn.addEventListener("click", () => {
-    yesScale += 0.5;
+    yesScale = Math.min(yesScale + 0.5, 2); // máximo 2x en móvil
     yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
     yesBtn.style.position = "fixed";
     yesBtn.style.top = "50%";
@@ -39,12 +40,17 @@ noBtn.addEventListener("click", () => {
     setTimeout(() => yesBtn.classList.remove("halo"), 1000);
 });
 
+// Click en YES: mostrar final
 yesBtn.addEventListener("click", () => {
     title.textContent = "Nos vemos el domingoo!!♡";
 
     // Ocultamos el gato original
     catImg.style.display = "none";
 
+    // Mostrar contenido final
     buttons.style.display = "none";
     finalContainer.style.display = "flex";
+
+    // Opcional: animación del gato final
+    if(finalCat) finalCat.style.transform = "scale(1.1)";
 });
